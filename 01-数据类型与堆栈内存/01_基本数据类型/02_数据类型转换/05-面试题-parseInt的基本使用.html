@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [27.2, 0, "0013", "14px", 123];
+      arr = arr.map(parseInt); // [27, NaN, 1, 1, 27]
+      // parInt('27.2', 0) ---> 按照10或者16处理， 所以是27
+      // parseInt('0', 1)  ---> NaN
+      // parseInt('0013',2) // 1
+      // parseInt('14px', 3) // 1
+      // parseInt('123',4) // 16 + 8 + 3 = 27
+
+      // map的第一个参数是item，第二个参数是index
+      console.log(arr);
+    </script>
+  </body>
+</html>

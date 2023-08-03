@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+      isNaN(parseInt(new Date())) + Number([1]) + typeof undefined;
+      // 1. new Date()[Symbol.toPrimitive]("string") →'Thu Aug 03 2023 20:57:50 GMT+0800 (中国标准时间)'
+      // 2. parseInt → NaN
+      // 3. true
+      // 4. [1] valueOf [1]; toString "1" 1
+      // 1+1 + string
+      // 2undefined
+      // isNaN(NaN) + 1 + "undefined" ===> "2undefined"
+      // !(!"Number(undefined)");
+    </script>
+  </body>
+</html>
