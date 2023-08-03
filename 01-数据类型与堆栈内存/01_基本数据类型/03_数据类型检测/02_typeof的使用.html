@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 0,区分原始类型值
+      console.log(typeof 1);
+      console.log(typeof "string");
+      console.log(typeof new String(1));
+      console.log(typeof Boolean(1));
+      // 1, 无法细分对象
+      // console.log(typeof {});
+      // console.log(typeof null);
+      // console.log(typeof []);
+      // console.log(typeof /s/i);
+      // console.log(typeof Object.keys);
+      // 2,应用：检测一个值是不是对象
+      let obj = {};
+      let type = typeof obj;
+      // if (obj !== null && (type === "function" || type === "object")) {
+      //   console.log("object");
+      // }
+      if (obj !== null && /^function|object$/.test(type)) console.log("true");
+    </script>
+  </body>
+</html>

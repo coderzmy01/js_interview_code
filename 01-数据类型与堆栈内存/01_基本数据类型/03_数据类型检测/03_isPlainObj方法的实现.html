@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function isPlainObject(value) {
+        if (value === null || typeof value !== "object") return false;
+        return value.__proto__ === Object.prototype;
+      }
+      const obj1 = { a: 1, b: 2 };
+      const obj2 = Object.create(null);
+      const obj3 = new Object();
+      const obj4 = function () {};
+
+      console.log(isPlainObject(obj1)); // true
+      console.log(isPlainObject(obj2)); // false
+      console.log(isPlainObject(obj3)); // true
+      console.log(isPlainObject(obj4)); // false
+    </script>
+  </body>
+</html>
