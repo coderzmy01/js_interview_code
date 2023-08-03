@@ -8,8 +8,12 @@
   </head>
   <body>
     <script>
-      console.log(Number.MAX_SAFE_INTEGER);
-      console.log(Math.pow(2, 53));
+      // 1. 最大安全数
+      // console.log(Number.MAX_SAFE_INTEGER === Math.pow(2, 53) - 1);
+      // console.log(Math.pow(2, 53));
+      // 2. bigInt的使用
+      console.log(BigInt(Math.pow(2, 53) + "5"));
+      console.log(BigInt(Math.pow(2, 53)).toString());
     </script>
   </body>
 </html>
