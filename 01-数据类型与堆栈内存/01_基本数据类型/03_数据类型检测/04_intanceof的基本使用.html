@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. instanceof的局限性一 无法区分原始值
+      // console.log(1 instanceof Number);
+      // 2.instanceof的局限性二 区分不了标准普通对象
+      // let arr = [1, 2];
+      // console.log(arr instanceof Array);
+      // console.log(arr instanceof Object);
+      // console.log(arr instanceof RegExp);
+      // 3. 可以篡改
+      arr = Object.create(/5$/);
+      console.log(arr instanceof RegExp);
+    </script>
+  </body>
+</html>

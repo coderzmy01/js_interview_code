@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. instanceof的局限性一 无法区分原始值
+      // console.log(1 instanceof Number);
+      // 2.instanceof的局限性二 区分不了标准普通对象
+      // let arr = [1, 2];
+      // console.log(arr instanceof Array);
+      // console.log(arr instanceof Object);
+      // console.log(arr instanceof RegExp);
+      // 3. 可以篡改
+      // arr = Object.create(/5$/);
+      // console.log(arr instanceof RegExp);
+      // let arr = [1, 2];
+      // console.log(arr instanceof Array);
+      // console.log(Array[Symbol.hasInstance](arr));
+
+      // 面试题: 修改obj的原型为Fn后，如何让instanceof的检测结果为false?
+      class Fn {
+        // 标志位
+        name = "Fn";
+        x = 10;
+        y = 20;
+        sum() {
+          if (!this.name) throw new TypeError("this.name is not defined");
+          // ...
+        }
+        // 只有基于ES6中的class创建类，基于“static xxx”这种语法重写Symbol.hasInstance才有用；如果是ES5创建的类，基于 Fn[Symbol.hasInstance]=xxx 这样重写是无效的！！
+        static [Symbol.hasInstance](value) {
+          return (
+            // 即使重写也不能忘记获取原型
+            value.name === "Fn" && Object.getPrototypeOf(value) === Fn.prototype
+          );
+        }
+      }
+      let f1 = new Fn();
+      // let f2 = new Fn;
+      console.log(f1 instanceof Fn); //true
+      f1.sum(); // f1有name属性，可以调用该方法
+
+      let obj = {};
+      Object.setPrototypeOf(obj, Fn.prototype);
+
+      console.log(obj instanceof Fn); // 没有重写该方法结果为true
+      // obj.sum(); // obj没有name属性，不可以调用该方法
+
+      // console.log(obj instanceof Fn); //重写该方法后Fn[Symbol.hasInstance](obj)结果为false
+    </script>
+  </body>
+</html>
