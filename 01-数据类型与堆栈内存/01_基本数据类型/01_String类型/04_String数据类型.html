@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // console.log(String(5));
+      // console.log((8).toString());
+      // console.log([1, 2, 4, 5, 6].toString());
+      // 1.字符串相关算法
+
+      // 1.1 字符串逆序
+      let string = "abcdefg";
+      // let revString = ""
+      // for (let i = string.length - 1; i >= 0; i--) {
+      //   revString += string[i]
+      // }
+      // console.log(revString);
+      function reverseString1(str) {
+        return str.split("").reverse().join("");
+      }
+      function revString2(str) {
+        let revString = "";
+        for (let i = string.length - 1; i >= 0; i--) {
+          revString += str.charAt(i);
+        }
+        return revString;
+      }
+      function revString3(str) {
+        return Array.prototype.slice.call(str).reverse().join("");
+      }
+      class Stack {
+        data = [];
+        pop() {
+          return this.data.pop();
+        }
+        push(value) {
+          this.data.push(value);
+        }
+      }
+      function revString4(str) {
+        var s = new Stack();
+        var arr = str.split("");
+        var res = "";
+        var length = arr.length;
+        arr.forEach((item) => s.push(item));
+        for (var j = 0; j < length; j++) {
+          res += s.pop();
+        }
+        return res;
+      }
+
+      console.log(revString4(string));
+    </script>
+  </body>
+</html>

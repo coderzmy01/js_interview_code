@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let target = {};
+      let obj = {
+        name: "kobe",
+        age: 18,
+        height: 180,
+        friend: ["curry", "james"],
+      };
+      let obj2 = {
+        name: "coderwhy",
+        age: 19,
+        friend: ["curry", "james"],
+        skill: "sex",
+      };
+      let obj3 = {
+        name: "coderzmy",
+        age: 20,
+        friend: ["curry", "james"],
+        skill: "sex",
+        feature: "high",
+      };
+      let copy = Object.assign(target, obj);
+      // console.log(copy === obj);
+      // copy.friend.push("zhangSir");
+      // console.log(obj);
+      console.log(Object.assign(target, obj, obj2, obj3));
+      console.log(Object.assign(obj, obj2, obj3));
+    </script>
+  </body>
+</html>

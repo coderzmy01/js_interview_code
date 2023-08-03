@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 利用instanceof
+      var arr = [1, 2, 3];
+      console.log(arr instanceof Array);
+      console.log(arr instanceof Object);
+      function getDataType(arr) {
+        if (arr instanceof Array) return "Array";
+        else if (arr instanceof Object) return "Object";
+        else return "is not Object";
+      }
+      // 2. 通过toString()
+      function getDataTypeByToString(arr) {
+        return Object.prototype.toString(arr);
+      }
+      // 3. isArray()
+    </script>
+  </body>
+</html>

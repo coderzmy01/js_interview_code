@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1.普通对象的转换
+      const x = { y: 100 };
+      console.log(Number(x));
+      // 2.数组对象的转换
+      const arr = [10];
+      console.log(Number(arr));
+      const arr1 = [10, 20];
+      console.log(Number(arr1));
+      // 3. 函数对象的转换
+      const func = function () {
+        return arr1;
+      };
+      console.log(Number(func));
+    </script>
+  </body>
+</html>

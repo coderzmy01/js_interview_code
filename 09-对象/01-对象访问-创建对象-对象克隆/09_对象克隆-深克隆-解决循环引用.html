@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let obj = {
+      //   name: "coderwhy",
+      //   height: 180,
+      //   friend: "kobe",
+      // };
+      // let ObjCopy = JSON.parse(JSON.stringify(obj));
+      // console.log(ObjCopy, obj);
+      // // ObjCopy.name = "coderzmy";
+      // console.log(ObjCopy, obj);
+      // console.log(Object.prototype.toString.call([]));
+      function isObject(origin) {
+        return (
+          origin !== null &&
+          (typeof origin === "object" || typeof origin === "function")
+        );
+      }
+      function deepCopy(origin, map = new Map()) {
+        // 1. 原始值直接返回
+        if (!isObject(origin)) return origin;
+
+        // 2. 对象类型进行递归+复制
+        //2.1 数组进行判断，是数组转换成数组
+        let cpyObj = Array.isArray(origin) ? [] : {};
+        // 3.map解决循环引用问题
+        // 3.1 是否已经拷贝过
+        if (map.get(origin)) {
+          return map.get(origin);
+        }
+        // 3.2 没拷贝过进行设置
+        map.set(origin, copyObj);
+
+        // 4. 复制
+        for (let key in origin) {
+          // 4,1 这里的map必须传，是用来记录有没有拷贝过的
+          copyObj[key] = deepCopy(origin[key], map);
+        }
+        return copyObj;
+      }
+
+      function myDeepClone(origin, map = new Map()) {
+        if (!isObject(origin)) return origin;
+        let cloneObj = Array.isArray() ? [] : {};
+        if (map.get(origin)) return map.get(origin);
+        map.set(origin, cloneObj);
+        for (const key in origin) {
+          cloneObj[key] = myDeepClone(origin[key], map);
+        }
+        return cloneObj;
+      }
+      const info = {
+        name: "why",
+        age: 18,
+        friend: [
+          {
+            name: "kobe",
+            address: {
+              name: "洛杉矶",
+              detail: "斯坦普斯中心",
+            },
+          },
+          {
+            name: "curry",
+            address: {
+              name: "金州",
+              detail: "大通中心",
+            },
+          },
+        ],
+      };
+      info.circulate = info;
+
+      const newObj = myDeepClone(info);
+      info.friend[0].address.name = "北京市";
+      console.log(newObj);
+    </script>
+  </body>
+</html>

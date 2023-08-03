@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // //1. 弥补typeof的不细致的缺陷
+      // const arr = [1, 2];
+      // console.log(arr instanceof Array);
+      // //2. 构造函数可以进行判断
+      // console.log(10 instanceof Number);
+      // console.log(new Number(10) instanceof Number);
+      // // 3. 实质是对原型链上进行查找
+      // function fn() {}
+      // fn.prototype = Object.create(Array.prototype);
+      // let f = new fn();
+      // console.log(f instanceof Array);
+      // // 缺点：无法对象是否是普通对象
+      let arr = [10, 20];
+      console.log(arr instanceof Array);
+      console.log(Array[Symbol.hasInstance](arr));
+
+      class Fn {
+        name = "fn";
+        x = 10;
+        y = 20;
+        sum(){
+          if(!this.name)throw new TypeError('this.name is not defined')
+        }
+      }
+    </script>
+  </body>
+</html>

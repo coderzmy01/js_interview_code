@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let obj = {
+      //   name: "coderwhy",
+      //   height: 180,
+      //   friend: "kobe",
+      // };
+      // let ObjCopy = JSON.parse(JSON.stringify(obj));
+      // console.log(ObjCopy, obj);
+      // // ObjCopy.name = "coderzmy";
+      // console.log(ObjCopy, obj);
+      // console.log(Object.prototype.toString.call([]));
+
+      //判断数据类型值
+      function isObject(origin) {
+        return (
+          origin !== null &&
+          (typeof origin === "object" || typeof origin === "function")
+        );
+      }
+      function deepCopy(origin) {
+        // 1. 原始值直接返回
+        if (!isObject(origin)) return origin;
+
+        // 2. 对象类型进行递归+复制
+        let copyObj = {};
+        for (let key in origin) {
+          copyObj[key] = deepCopy(origin[key]);
+        }
+        return copyObj;
+      }
+      const info = {
+        name: "why",
+        age: 18,
+        friend: {
+          name: "kobe",
+          address: {
+            name: "洛杉矶",
+            detail: "斯坦普斯中心",
+          },
+        },
+      };
+
+      const newObj = deepCopy(info);
+      info.friend.address.name = "北京市";
+      console.log(newObj.friend.address.name);
+    </script>
+  </body>
+</html>

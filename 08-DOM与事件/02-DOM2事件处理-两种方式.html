@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM2事件处理程序</title>
+  </head>
+  <body>
+    <button id="myButton">点击我触发事件</button>
+
+    <script type="text/javascript">
+      var button = document.getElementById("myButton");
+
+      // 添加事件处理程序（兼容各种浏览器）
+      if (button.addEventListener) {
+        // 非IE浏览器
+        button.addEventListener("click", function () {
+          console.log("处理函数1");
+        });
+
+        button.addEventListener("click", function () {
+          console.log("处理函数2");
+        });
+      } else if (button.attachEvent) {
+        // IE浏览器
+        button.attachEvent("onclick", function () {
+          console.log("处理函数1");
+        });
+
+        button.attachEvent("onclick", function () {
+          console.log("处理函数2");
+        });
+      }
+    </script>
+  </body>
+</html>

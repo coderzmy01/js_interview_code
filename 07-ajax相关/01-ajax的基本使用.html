@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // 1. 创建xhr对象
+      const xhr = new XMLHttpRequest();
+      // 2.配置基本项
+      xhr.open("get", "http://123.207.32.32:8000/home/multidata");
+      // 3.监听状态改变
+      xhr.onreadystatechange = function () {
+        // 只处理完成的状态
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+        //转成js对象
+        const resJSON = JSON.parse(xhr.response);
+        // 获取数据一张图片，并渲染到页面上
+        const banner = resJSON.data.banner.list;
+        let boxEl = document.querySelector(".box");
+        let imgEL = document.createElement("div");
+        imgEL.style.backgroundImage = `url(${banner[0].image})`;
+        boxEl.append(imgEL);
+        console.log(banner);
+      };
+      xhr.send();
+    </script>
+    <div class="box" style="height: 200px"></div>
+  </body>
+</html>

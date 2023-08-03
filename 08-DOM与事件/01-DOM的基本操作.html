@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .last {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container">
+      <li class="first">1</li>
+      <li class="second">2</li>
+      <li>3</li>
+      <li id="target">4</li>
+      <li>5</li>
+    </ul>
+    <a href="www.baidu.com">百度一下，你就知道</a>
+    <script>
+      // 1. 增加操作
+      // var main = document.querySelector(".container");
+      // var liEL = document.createElement("li");
+      // var liText = document.createTextNode("coderwhy");
+      // var liAtrr = document.createAttribute("class");
+      // liAtrr.value = "last";
+      // liEL.setAttributeNode(liAtrr);
+      // liEL.appendChild(liText);
+      // main.appendChild(liEL);
+      // var liEL2 = document.createElement("li");
+      // var liText2 = document.createTextNode("coderzmy");
+      // liEL2.appendChild(liText2);
+      // main.insertBefore(liEL2, liEL);
+
+      // 2. 删除操作
+      var main = document.querySelector(".container");
+      var fistChild = main.firstElementChild;
+      main.removeChild(fistChild);
+
+      var aLink = document.querySelector("a");
+      aLink.removeAttribute("href");
+
+      // var lastNode = main.lastElementChild;
+      // var textNode = lastNode.childNodes[0];
+      // lastNode.removeChild(textNode);
+
+      document.createElement()
+      document.createTextNode()
+      document.createDocumentFragment()
+      var title2 = titles[0].cloneNode(true);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. Number类型；
+      console.log(isNaN(1));
+      console.log(isNaN(NaN));
+      console.log(isNaN(Infinity));
+      console.log("----");
+      // 2. 字符串类型；
+      console.log(isNaN("aa"));
+      console.log(isNaN("12.5"));
+      console.log(isNaN("12.5px"));
+      console.log(isNaN(""));
+      console.log("-----");
+      // 3.对象类型；
+      console.log(isNaN([]));
+      console.log(isNaN([10]));
+      console.log(isNaN([10, 20]));
+      console.log(isNaN({}));
+      console.log("-----");
+      // 4. null,undefined,Symbol;
+      console.log(isNaN(null));
+      console.log(isNaN(undefined));
+      console.log(isNaN(Symbol(1)));
+    </script>
+  </body>
+</html>

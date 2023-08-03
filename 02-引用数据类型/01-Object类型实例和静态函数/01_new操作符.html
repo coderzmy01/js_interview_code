@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Cat(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      // console.log(new Cat("m", 18));
+      // // 1. 没有默认就返回this
+      // function Cat2(name, age) {
+      //   var cat = {};
+      //   cat.name = name;
+      //   cat.age = age;
+      //   return cat
+      // }
+      // console.log(new Cat2("n", 20));
+
+      function myNew() {
+        var obj = {};
+        obj.__proto__ = Cat.prototype;
+        var res = Cat.apply(obj, arguments);
+        return typeof res === "object" ? res : obj;
+      }
+      Cat.prototype.sayHi = function () {
+        console.log("hi");
+      };
+      console.log(myNew("coderzmy", 18));
+      // 1. 完整版
+      function _new(func, ...args) {
+        let obj = Object.create(func.prototype);
+        let res = func.apply(obj, args);
+        if (
+          res !== null &&
+          (typeof res === "object" || typeof res === "function")
+        )
+          return res;
+        return obj;
+      }
+      console.log(_new(Cat, "coderwhy", 19));
+    </script>
+  </body>
+</html>

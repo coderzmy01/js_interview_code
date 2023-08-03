@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let instance_of = function (obj, Cons) {
+        if (typeof Cons !== "function")
+          throw new TypeError("构造函数需要是函数");
+        if (
+          obj === null ||
+          !(typeof obj === "object" || typeof obj === "function")
+        )
+          return false;
+        if (Symbol !== undefined) return Cons[Symbol.hasInstance](obj);
+        let proto = Object.getPrototypeOf(obj);
+        while (proto) {
+          if (proto === Cons.prototype) return true;
+          proto = Object.getPrototypeOf(proto);
+        }
+        return false;
+      };
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      const person = new Person("John", 30);
+      console.log(instance_of(person, Person)); // true
+      console.log(instance_of(person, Object)); // true
+      console.log(instance_of(person, Array)); // false
+
+      class Animal {
+        constructor(name) {
+          this.name = name;
+        }
+      }
+      const cat = new Animal("Fluffy");
+      console.log(instance_of(cat, Animal)); // true
+      console.log(instance_of(cat, Object)); // true
+      console.log(instance_of(cat, Array)); // false
+
+      const str = new String("hello");
+      console.log(instance_of(str, String)); // true
+      console.log(instance_of(str, Object)); // true
+      console.log(instance_of(str, Number)); // false
+    </script>
+  </body>
+</html>

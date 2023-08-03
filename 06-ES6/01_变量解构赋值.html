@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1.嵌套取值
+      // const node = {
+      //   loc: {
+      //     start: {
+      //       line: 1,
+      //       column: 5,
+      //     },
+      //   },
+      // };
+      // const {
+      //   loc,
+      //   loc: {
+      //     start,
+      //     start: { line, column },
+      //   },
+      // } = node;
+      // console.log(loc, start, line, column);
+      // 2. 取继承的属性
+      const obj1 = {};
+      const obj2 = { foo: "bar" };
+      Object.setPrototypeOf(obj1, obj2);
+      const { foo } = obj1;
+      console.log(foo);
+    </script>
+  </body>
+</html>

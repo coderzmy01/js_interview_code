@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>事件流示例</title>
+</head>
+<body>
+  <div id="outer">
+    <div id="inner">
+      <button id="btn">点击</button>
+    </div>
+  </div>
+
+  <script>
+    function handleClick(event) {
+      console.log('target:', event.target.id);
+      console.log('currentTarget:', event.currentTarget.id);
+    }
+
+    var outer = document.getElementById('outer');
+    var inner = document.getElementById('inner');
+    var btn = document.getElementById('btn');
+
+    outer.addEventListener('click', handleClick, false);
+    inner.addEventListener('click', handleClick, false);
+    btn.addEventListener('click', handleClick, false);
+  </script>
+</body>
+</html>

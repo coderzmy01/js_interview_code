@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. sym 标识唯一值
+      // console.log(Symbol() === Symbol());
+      // console.log(Symbol("qq") === Symbol("qq"));
+      let sym = Symbol("BB");
+      let obj = {
+        name: "coderwhy",
+        age: 18,
+        0: "something",
+        [sym]: "BB",
+        [Symbol("AA")]: "AA",
+      };
+      console.log(obj[sym]);
+      console.log(obj[Symbol("AA")]);
+      // 所以需要通过变量去访问值
+      
+    </script>
+  </body>
+</html>

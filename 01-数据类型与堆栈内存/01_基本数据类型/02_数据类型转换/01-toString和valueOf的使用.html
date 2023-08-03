@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let arr = [];
+      // arr.toString = function () {
+      //   console.log("执行tostring");
+      //   return [];
+      // };
+      // arr.valueOf = function () {
+      //   console.log("执行valueOf");
+      //   return [];
+      // };
+      // console.log(String(arr));
+      let obj = {
+        a: 1,
+        b: 2,
+        toString() {
+          console.log("tostring");
+          return this.a;
+        },
+        valueOf() {
+          console.log("toValue");
+          return this.b;
+        },
+      };
+      console.log(+obj);
+      console.log("" + obj);
+      console.log(obj == "10");
+      console.log(obj === "10");
+    </script>
+  </body>
+</html>

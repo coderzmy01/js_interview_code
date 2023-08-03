@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        height: 300%;
+        background: -webkit-linear-gradient(
+          top left,
+          lightblue,
+          lightpink,
+          orange
+        );
+      }
+      .link {
+        display: none;
+        position: fixed;
+        right: 10px;
+        bottom: 100px;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="link"></div>
+    <script>
+      let link = document.querySelector(".link");
+      let doc = document.documentElement;
+      let windowH = doc.clientHeight;
+      window.onscroll = () => {
+        console.log(doc.clientHeight);
+        link.style.display = doc.scrollTop > windowH ? "block" : "none";
+      };
+      link.addEventListener("click", function () {
+        doc.scrollTop = 0;
+      });
+    </script>
+  </body>
+</html>

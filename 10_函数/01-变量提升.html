@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // debugger;
+      // console.log(a);
+      // var a = 1;
+      // console.log(b);
+      // let b = 2;
+      // 1
+      // console.log(a, b);
+      // var a = 12,
+      //   b = "林一一";
+      // function foo() {
+      //   // 2
+      //   console.log(a, b);
+      //   // 3
+      //   var a = (b = 13);
+      //   console.log(a, b);
+      // }
+      // foo();
+      // console.log(a, b);
+
+      /* 输出：
+          undefined undefined
+          undefined "林一一"
+          13 13
+          12 13
+      */
+      // console.log(fn);
+      // function fn() {
+      //   console.log(1);
+      // }
+      // console.log(fn);
+      // var fn = 12;
+      // console.log(fn);
+      // function fn() {
+      //   console.log(2);
+      // }
+      // console.log(fn);
+      // console.log(a);
+      // if (!("a" in window)) {
+      //   var a = 13;
+      // }
+      // console.log(a);
+      f = function () {
+        return true;
+      };
+      g = function () {
+        return false;
+      };
+      (function () {
+        console.log(g);
+        if (g() && [] == ![]) {
+          f = function () {
+            return false;
+          };
+          function g() {
+            return true;
+          }
+        }
+      })();
+      console.log(f());
+      console.log(g());
+    </script>
+  </body>
+</html>

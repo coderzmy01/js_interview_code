@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function myAjax({
+        url,
+        method = "get",
+        data = {},
+        timeout = 10000,
+        headers = {},
+        success,
+        failure,
+      } = {}) {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            // 成功的回调
+            success && success(xhr.response);
+          } else {
+            // 失败的回调
+            failure && failure({ status: xhr.status, message: xhr.statusText });
+          }
+        };
+        // 设置响应类型
+        xhr.responseType = "json";
+
+        if (method.toUpperCase() === "GET") {
+          // 处理查询字符串
+          const queryStrings = [];
+          // 遍历data,字符拼接
+          for (const key in data) {
+            queryStrings.push(`${key}=${data[key]}`);
+            url = url + "?" + queryStrings.join("&");
+            xhr.open(method, url);
+            xhr.send();
+          }
+        } else {
+          // post请求
+          xhr.open(method, url);
+          xhr.setRequestHeader("Content-type", "application/json");
+          xhr.send(JSON.stringify(data));
+        }
+      }
+      myAjax({
+        url: "http://123.207.32.32:1888/02_param/get",
+        method: "GET",
+        data: {
+          name: "why",
+          age: 18,
+        },
+        success: function (res) {
+          console.log("res:", res);
+        },
+        failure: function (err) {
+          // alert(err.message)
+        },
+      });
+    </script>
+  </body>
+</html>

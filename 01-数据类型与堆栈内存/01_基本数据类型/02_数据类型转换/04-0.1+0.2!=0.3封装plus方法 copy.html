@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function coefficient(num) {
+      //   // 1. 转换为字符串进行位数比较
+      //   num = num + "";
+      //   // 2.取出小数位数
+      //   let [, char = ""] = num.split(".");
+      //   // 3. 返回位数
+      //   return char.length;
+      // }
+      // function plus(num1, num2) {
+      //   num1 = +num1;
+      //   num2 = +num2;
+      //   if (isNaN(num1) || isNaN(num2)) return false;
+      //   let max = Math.max(coefficient(num1), coefficient(num1));
+      //   let N = Math.pow(10, max);
+      //   return (num1 * N + num2 * N) / N;
+      // }
+      // console.log(plus(0.1, 0.2));
+      // let i = 0;
+      // let a = {
+      //   [Symbol.toPrimitive]() {
+      //     return ++i;
+      //   },
+      // };
+
+      // let a = [1, 2, 3];
+      // a.toString = a.shift;
+      var a;
+      var i = 0;
+      Object.defineProperty(window, "a", {
+        get() {
+          return ++i;
+        },
+      });
+      if (a == 1 && a == 2 && a == 3) {
+        console.log("ok");
+      }
+
+      let x = [12, 13];
+      const fn = function (y) {
+        y[0] = 100;
+        y = [100];
+        console.log(y);
+      };
+      fn(x);
+      console.log(x);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>事件处理程序上下文示例</title>
+  </head>
+  <body>
+    <button id="myButton">点击我</button>
+
+    <script type="text/javascript">
+      var button = document.getElementById("myButton");
+
+      // 添加事件处理程序（兼容各种浏览器）
+      if (button.addEventListener) {
+        // 非IE浏览器
+        button.addEventListener("click", function () {
+          console.log("非IE浏览器中的上下文：", this);
+        });
+      } else if (button.attachEvent) {
+        // IE浏览器
+        button.attachEvent("onclick", function () {
+          console.log("IE浏览器中的上下文：", window);
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function inheritPrototype(subType, superType) {
+        subType.prototype = Object.create(superType.prototype);
+        Object.defineProperty(subType.prototype, "constructor", {
+          enumerable: false,
+          configurable: true,
+          writable: true,
+          value: subType,
+        });
+      }
+      function Animal(name) {
+        this.type = "animal";
+        this.name = name || "动物";
+        this.feature = ["fast", "big", "short"];
+        this.run = function () {
+          console.log(this.name + "run------");
+        };
+      }
+      Animal.prototype.eat = function () {
+        console.log(this.name + "正在吃food");
+      };
+      function Cat(name) {
+        // Animal.call(this, name);
+        Animal.call(name);
+        this.fly = function () {
+          console.log("I can fly");
+        };
+      }
+      inheritPrototype(Cat, Animal);
+      let c1 = new Cat("coderzmy");
+      let c2 = new Cat("coderwhy");
+      console.log(c1);
+      c1.run();
+      c1.eat();
+      c1.fly();
+    </script>
+  </body>
+</html>

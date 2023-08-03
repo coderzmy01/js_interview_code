@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let class2type = {};
+      let toString = class2type.toString;
+      console.log(toString.call(10));
+      console.log(toString.call(NaN));
+      console.log(toString.call(Infinity));
+      console.log("-----");
+      console.log(toString.call(true));
+      console.log(toString.call(null));
+      console.log(toString.call(undefined));
+      console.log("---");
+      console.log(toString.call(function () {}));
+
+      class myObj {
+        [Symbol.toStringTag] = "obj";
+      }
+      const mobj = new myObj();
+      console.log(mobj);
+      console.log(toString.call(mobj));
+    </script>
+  </body>
+</html>

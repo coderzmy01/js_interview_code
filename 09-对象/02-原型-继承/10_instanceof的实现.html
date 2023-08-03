@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person() {}
+      function myInstanceof(o, Func) {
+        let proto = Object.getPrototypeOf(o);
+        while (proto) {
+          if (proto === Func.prototype) return true;
+          proto = Object.getPrototypeOf(proto);
+        }
+        return false;
+      }
+      function Cat() {}
+      Cat.prototype = new Person();
+      let p1 = new Person();
+      let c1 = new Cat();
+      console.log(myInstanceof(p1, Person));
+      console.log(myInstanceof(p1, Cat));
+      console.log(myInstanceof(c1, Person));
+      console.log(myInstanceof(c1, Cat));
+    </script>
+  </body>
+</html>

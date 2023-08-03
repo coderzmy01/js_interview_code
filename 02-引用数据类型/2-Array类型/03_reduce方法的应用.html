@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 累加
+      var arr = [1, 2, 3, 4, 5];
+      console.log(
+        arr.reduce((acc, cur) => {
+          return acc + cur;
+        })
+      );
+      // 2.统计次数
+      var arr2 = [1, 2, 3, 2, 2, 5, 1];
+      console.log(
+        arr2.reduce((acc, cur) => {
+          acc[cur] = acc[cur] + 1 || 1;
+          return acc;
+        }, {})
+      );
+    </script>
+  </body>
+</html>
