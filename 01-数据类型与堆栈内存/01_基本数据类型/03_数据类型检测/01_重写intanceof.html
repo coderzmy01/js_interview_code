@@ -9,20 +9,20 @@
   <body>
     <script>
       let instance_of = function (obj, Cons) {
-        if (typeof Cons !== "function")
-          throw new TypeError("构造函数需要是函数");
-        if (
-          obj === null ||
-          !(typeof obj === "object" || typeof obj === "function")
-        )
+        // 1. Cons必须是一个函数
+        if (typeof Cons !== "function") throw Error("搞乜嘢，不是函数你也玩");
+        // 2. 原始值滚蛋
+        if (obj === null || !/^object|function$/.test(typeof obj)) return false;
+        if (Symbol) {
+          return Cons[Symbol.hasInstance](obj);
+        } else {
+          let proto = Object.getPrototypeOf(obj);
+          while (proto) {
+            if (proto === Cons.prototype) return true;
+            proto = Object.getPrototypeOf(proto);
+          }
           return false;
-        if (Symbol !== undefined) return Cons[Symbol.hasInstance](obj);
-        let proto = Object.getPrototypeOf(obj);
-        while (proto) {
-          if (proto === Cons.prototype) return true;
-          proto = Object.getPrototypeOf(proto);
         }
-        return false;
       };
       function Person(name, age) {
         this.name = name;
@@ -46,7 +46,7 @@
       const str = new String("hello");
       console.log(instance_of(str, String)); // true
       console.log(instance_of(str, Object)); // true
-      console.log(instance_of(str, Number)); // false
+      console.log(instance_of(str, str)); // false
     </script>
   </body>
 </html>

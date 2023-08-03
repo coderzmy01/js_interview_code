@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var class2type = {},
+        toString = class2type.toString;
+      // console.log(toString.call(1));
+      // console.log(toString.call(NaN));
+      // console.log(toString.call(""));
+      // console.log(toString.call(true));
+      // console.log(toString.call(undefined));
+      // console.log(toString.call(Symbol));
+      let arr = [];
+      Object.setPrototypeOf(arr, {});
+      console.log(toString.call(arr));
+    </script>
+  </body>
+</html>
