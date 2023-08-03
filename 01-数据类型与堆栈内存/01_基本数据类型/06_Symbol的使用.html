@@ -19,10 +19,19 @@
         [sym]: "BB",
         [Symbol("AA")]: "AA",
       };
-      console.log(obj[sym]);
-      console.log(obj[Symbol("AA")]);
+      // console.log(obj[sym]);
+      // console.log(obj[Symbol("AA")]);
       // 所以需要通过变量去访问值
-      
+      // 2. 访问Symbol属性
+      console.log(Object.keys(obj));
+      for (const key in obj) {
+        if (Object.hasOwnProperty.call(obj, key)) {
+          const element = obj[key];
+          console.log(element);
+        }
+      }
+      console.log(Object.getOwnPropertySymbols(obj));
+      console.log(Reflect.ownKeys(obj));
     </script>
   </body>
 </html>
