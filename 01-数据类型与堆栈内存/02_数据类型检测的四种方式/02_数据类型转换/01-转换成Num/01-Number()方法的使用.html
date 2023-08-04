@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [10];
+      arr.valueOf = function () {
+        console.log("这是valueof被调用");
+        return 10;
+      };
+      // 1. 数组对象，最终调用的是toString(),转换时去除[]
+      console.log(Number(arr));
+      // 2. 包装类，最终调用的是valueOf()
+      console.log(Number(new Number(10)));
+    </script>
+  </body>
+</html>
