@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Point {
+        constructor() {
+          this.x = "a";
+          this.y = "b";
+        }
+
+        getId() {
+          return "1";
+        }
+      }
+
+      function isPrototypeAttr(obj, pro) {
+        return !obj.hasOwnProperty(pro) && pro in obj;
+      }
+      let p1 = new Point();
+      console.log(isPrototypeAttr(p1, "toString")); //true
+      console.log(isPrototypeAttr(p1, "getId")); //true
+      console.log(isPrototypeAttr(p1, "x")); //false
+
+      //所以toString和getId都是原型对象属性。x就是实例对象属性！
+      let obj ={
+        name:"coderwhy"
+      }
+      console.log({}.__proto__);
+    </script>
+  </body>
+</html>

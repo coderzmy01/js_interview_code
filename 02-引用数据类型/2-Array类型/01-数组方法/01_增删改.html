@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 问题：从数组中删除索引为2的元素，并插入新元素'X'和'Y'
+      // 初始数组
+      // let arr1 = ["a", "b", "c", "d", "e"];
+      // // 使用splice进行操作
+      // // 你的代码在这里
+      // arr1.splice(2, 1, "X", "Y");
+      // console.log(arr1); // 应该输出：['a', 'b', 'X', 'Y', 'd', 'e']
+
+      // 问题：删除数组中索引为1的元素，并将其替换为新元素'Z'
+      // 初始数组
+      let arr2 = ["apple", "banana", "cherry", "date", "fig"];
+      // 使用splice进行操作
+      // 你的代码在这里
+      arr2.splice(1, 1, "Z");
+      console.log(arr2); // 应该输出：['apple', 'Z', 'cherry', 'date', 'fig']
+
+      // 问题：从数组中删除最后两个元素
+      // 初始数组
+      let arr3 = [10, 20, 30, 40, 50];
+      // 使用splice进行操作
+      // 你的代码在这里
+      arr3.splice(arr3.length - 2, 2);
+      console.log(arr3); // 应该输出：[10, 20, 30]
+      // 问题：在数组的开头添加元素'first'，并删除最后一个元素
+      // 初始数组
+      let arr4 = ["one", "two", "three", "four"];
+      // 使用splice进行操作
+      // 你的代码在这里
+      arr4.splice(0, 0, "first");
+      arr4.splice(arr4.length-1, 1);
+      console.log(arr4); // 应该输出：['first', 'one', 'two', 'three']
+    </script>
+  </body>
+</html>
