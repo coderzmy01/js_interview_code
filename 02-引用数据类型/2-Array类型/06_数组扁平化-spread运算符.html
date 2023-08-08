@@ -8,13 +8,9 @@
   </head>
   <body>
     <script>
-      const arr1 = ["abc", "cba", "nba"],
-        arr2 = ["a", "b", "c"];
-      const arr = [...arr1, ...arr2]; // 展开语法
-      const [n1, ...newArr] = arr1; // 解构语法
-      const [n3, n2, ...N1] = arr1;
-      console.log(newArr);
-      console.log(n3, n2, N1);
+      let arr = [1, 2, [3, 4], 5, [7, [3, 5]]];
+      const flatten = (arr) => [...arr];
+      console.log(flatten(arr));
     </script>
   </body>
 </html>

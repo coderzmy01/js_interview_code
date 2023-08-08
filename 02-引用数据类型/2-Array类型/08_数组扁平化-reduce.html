@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [1, 2, [3, 4], 5, [7, [3, 5]]];
+      const flatten = (arr) => {
+        let res = [];
+        res = arr.reduce((pre, cur) => {
+          if (Array.isArray(cur)) {
+            pre = pre.concat(flatten(cur));
+          } else {
+            pre.push(cur);
+          }
+          return pre;
+        }, res);
+        return res;
+      };
+      console.log(flatten(arr));
+    </script>
+  </body>
+</html>
