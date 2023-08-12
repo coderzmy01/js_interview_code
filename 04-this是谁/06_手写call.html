@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      Function.prototype.myCall = function (context, ...args) {
+        if (context === null) context = window;
+        if (!/^function|object$/.test(typeof context)) Object(context);
+        let self = this,
+          key = Symbol("fn"),
+          result;
+        context[key] = self;
+        result = context[key](...args);
+        delete context[key];
+        return result;
+      };
+      // 假设有一个函数
+      function greet(message) {
+        return `${this.name} says: ${message}`;
+      }
+
+      // 测试用例
+      const person = { name: "John" };
+
+      // 使用原生的 call 方法调用函数
+      console.log(greet.call(person, "Hello")); // John says: Hello
+
+      // 使用你的 myCall 方法调用函数
+      // Function.prototype.myCall = function (context, ...args) {
+      //   // ...（你的实现）
+      // };
+
+      console.log(greet.myCall(person, "Hello")); // John says: Hello
+
+    </script>
+  </body>
+</html>

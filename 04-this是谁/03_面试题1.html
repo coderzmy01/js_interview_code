@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var x = 3,
+        obj = { x: 5 };
+
+      // 把自执行函数的结果赋值给obj.fn
+      obj.fn = (function () {
+        /*
+        自执行函数中的this为window, window.x = window.x *(++x)
+        window.x = 3 * (++3) = 12
+        返回一个函数 function(y) {}
+      */
+        this.x *= ++x;
+        return function (y) {
+          this.x *= ++x + y;
+          console.log(x);
+        };
+      })();
+      var fn = obj.fn;
+      obj.fn(6);
+      // this为obj obj.x = obj.x * ((++12) + 6), obj.x = 5 * 19 = 95, 输出x为13
+      fn(4);
+      // this为window window.x = window.x * ((++13) + 4) = 13 * 18 = 234
+      console.log(obj.x, x); // 95 234
+    </script>
+  </body>
+</html>

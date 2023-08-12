@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Dog(name) {
+        this.name = name;
+      }
+      Dog.prototype.bark = function () {
+        console.log("wangwang");
+      };
+      Dog.prototype.sayName = function () {
+        console.log("my name is " + this.name);
+      };
+      /*
+      let sanmao = new Dog('三毛');
+      sanmao.sayName();
+      sanmao.bark();
+      */
+      function _new(fn, ...args) {
+        //=>完成你的代码
+        let obj = Object.create(fn.prototype);
+        let res = fn.apply(obj, args);
+        return typeof res === "object" && res !== null ? res : obj;
+      }
+      let sanmao = _new(Dog, "三毛");
+      sanmao.bark(); //=>"wangwang"
+      sanmao.sayName(); //=>"my name is 三毛"
+      // instanceof用来检测某个对象是否是当前构造函数的实例对象
+      console.log(sanmao instanceof Dog); //=>true
+    </script>
+  </body>
+</html>
