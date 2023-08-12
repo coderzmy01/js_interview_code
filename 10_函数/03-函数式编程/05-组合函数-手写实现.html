@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function compose(...fns) {
+        return function (initialVal) {
+          return fns.reduceRight((prev, fn) => fn(prev), initialVal);
+        };
+      }
+      function add2(x) {
+        return x + 2;
+      }
+
+      function double(x) {
+        return x * 2;
+      }
+
+      function square(x) {
+        return x * x;
+      }
+
+      // 创建组合函数
+      const composedFunction = compose(add2, double, square);
+
+      // 使用组合函数
+      const result = composedFunction(3); // 先平方，再加倍，最后加 2： (3 * 3) * 2 + 2 = 20
+      console.log(result); // 输出: 20
+    </script>
+  </body>
+</html>
