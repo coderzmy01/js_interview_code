@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1. 回调地狱 -->
+    <script>
+      function doSomething(cb, a, b) {
+        setTimeout(() => {
+          console.log(a, b);
+          let res = a + b;
+          cb(res);
+        }, 1000);
+      }
+      doSomething(
+        (val) => {
+          console.log(val);
+        },
+        1,
+        2
+      );
+    </script>
+  </body>
+</html>

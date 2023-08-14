@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function requestData(url) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(url);
+          }, 3000);
+        });
+      }
+      function* getData() {
+        const res1 = yield requestData("zzt");
+        console.log("res1:", res1);
+        const res2 = yield requestData(res1 + "kobe");
+        console.log("res2:", res2);
+        const res3 = yield requestData(res2 + "james");
+        console.log("res3:", res3);
+      }
+      // let getDataInfo = getData();
+      // getDataInfo
+      //   .next()
+      //   .value.then((res) => {
+      //     return getDataInfo.next(res).value;
+      //   })
+      //   .then((res) => {
+      //     return getDataInfo.next(res).value;
+      //   })
+      //   .then((res) => {
+      //     return getDataInfo.next(res).value;
+      //   });
+      function asyncDataInfo(fn) {
+        let asyncFn = fn();
+        function execFn(res) {
+          let { done, value: Promise } = asyncFn.next(res);
+          if (done) return;
+          Promise.then((res) => {
+            execFn(res);
+          });
+        }
+        execFn();
+      }
+      asyncDataInfo(getData);
+
+    </script>
+  </body>
+</html>

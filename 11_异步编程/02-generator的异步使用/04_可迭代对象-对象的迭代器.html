@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const iterableObj = {
+      //   names: ["a", "b", "c"],
+      //   [Symbol.iterator]() {
+      //     let index = 0;
+      //     return {
+      //       next: () => {
+      //         index < this.names.length
+      //           ? {
+      //               done: true,
+      //               value: this.names[index++],
+      //             }
+      //           : {
+      //               done: true,
+      //             };
+      //       },
+      //     };
+      //   },
+      // };
+      // let arr = [1, 3, 3, 3];
+      // let arrIterator = arr[Symbol.iterator]();
+      // console.log(arrIterator.next());
+      // console.log(arrIterator.next());
+      // console.log(arrIterator.next());
+      // console.log(arrIterator.next());
+      // console.log(arrIterator.next());
+      function createIterator(arr = []) {
+        let index = 0;
+        return {
+          next() {
+            if (index < arr.length) {
+              return {
+                done: false,
+                value: arr[index++],
+              };
+            } else {
+              return {
+                done: true,
+              };
+            }
+          },
+        };
+      }
+      let obj = {
+        name: "coderwhy",
+        age: 18,
+        height: 180,
+        [Symbol.iterator]() {
+          let keys = Object.keys(this);
+          return createIterator(keys);
+        },
+      };
+      for (const iterator of obj) {
+        console.log(iterator);
+      }
+      class pIterator {
+        constructor(name, age, height) {
+          this.name = name;
+          this.age = age;
+          this.height = height;
+        }
+        [Symbol.iterator]() {
+          let keys = Object.keys(this);
+          return createIterator(keys);
+        }
+      }
+      let obj2 = new pIterator("coderzmy", 18, 180);
+      console.log([...obj2]);
+    </script>
+  </body>
+</html>

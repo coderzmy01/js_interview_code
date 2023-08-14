@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. next 方法
+      const arr = [1, 2, 3];
+      let index = 0;
+      const arrIterator = {
+        next() {
+          if (index < arr.length) {
+            return { done: false, value: arr[index++] };
+          } else {
+            return { done: true };
+          }
+        },
+      };
+      console.log(arrIterator.next());
+      console.log(arrIterator.next());
+      console.log(arrIterator.next());
+      console.log(arrIterator.next());
+      // 2. 函数封装
+      function createIterator(arr = []) {
+        let index = 0;
+        return {
+          next() {
+            if (index < arr.length) {
+              return {
+                done: false,
+                value: arr[index++],
+              };
+            } else {
+              return {
+                done: true,
+              };
+            }
+          },
+        };
+      }
+      const arr2 = ["c", "b", "a"];
+      let arr2Iterator = createIterator(arr2);
+      console.log(arr2Iterator.next());
+      console.log(arr2Iterator.next());
+      console.log(arr2Iterator.next());
+      console.log(arr2Iterator.next());
+    </script>
+  </body>
+</html>
