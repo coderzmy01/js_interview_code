@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function throttle(fn, wait) {
+        // 一个时间戳记录开始事件
+        let previous = 0;
+        return function (...args) {
+          let now = +new Date();
+          if (now - previous > wait) {
+            previous = now;
+            fn.call(this, ...args);
+          }
+        };
+      }
+      // 测试用例
+      function testFunction() {
+        console.log('Function called');
+      }
+
+      // 创建一个节流函数，间隔为 1000 毫秒
+      const throttledFunction = throttle(testFunction, 1000);
+
+      // 调用节流函数多次，查看输出
+      throttledFunction(); // 应该输出 "Function called"
+      throttledFunction(); // 间隔不足，不应该输出
+      setTimeout(() => {
+        console.log('st1----');
+        throttledFunction(); // 应该输出 "Function called"，因为已经过了 1000 毫秒
+      }, 1200);
+
+      // 等待一段时间后再次调用
+      setTimeout(() => {
+        console.log('st2---');
+        throttledFunction(); // 应该输出 "Function called"
+      }, 2500);
+    </script>
+  </body>
+</html>

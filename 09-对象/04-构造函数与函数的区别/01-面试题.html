@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Fn(x, y) {
+        let sum = 10;
+        this.total = x + y;
+        this.say = function () {
+          console.log(`和为：${this.total}`);
+        };
+      }
+      let res = Fn(10, 20); // 普通函数执行
+      let f1 = new Fn(10, 20); // 构造函数执行
+
+      let f2 = new Fn(); // 也执行了函数，但是没有传递参数
+      console.log(f1.sum); // undefined
+      console.log(f1.total); // 30
+      console.log(f1.say === f2.say); // false
+    </script>
+  </body>
+</html>
